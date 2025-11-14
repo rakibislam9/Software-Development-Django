@@ -48,7 +48,7 @@
 
         <main>
             <!-- Stutas Grid -->
-             <div class="grid grid-cols-4 gap-4 mb-8">
+             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 <!-- Total Tasks -->
                  <div class="bg-white rounded-xl p-6 shadow-sm">
                     <h3 class="text-sm font-medium text-gray-500 mb-4">Total Task</h3>
@@ -161,9 +161,59 @@
                     </div>
                  </div>
             </div>
+            <!-- Table Task  -->
 
-            <!-- Tasks Table -->
+            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
+
+                <div class="bg-white rounded-xl shadow-sm">
+                    <h1 class="p-4 font-semibold text-3xl">Today's Tasks</h1>
+                    <div class="divide-y divide-gray-100">
+                        <div class="flex justify-between p-4">
+                            <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                            <div>
+                                <span>Complete Project proposal</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="px-3 py-1 px-3 py-1 text-gray-600 text-sm">High</span>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- Reviwe team Update -->
+                     <div class="divide-y divide-gray-100">
+                        <div class="flex justify-between p-4">
+                            <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                            <div>
+                                <span>Reviwe Team Updates</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="px-3 py-1 px-3 py-1 text-gray-600 text-sm">Normal</span>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- Prepare for client Metting -->
+                     <div class="divide-y divide-gray-100">
+                        <div class="flex justify-between p-4">
+                            <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                            <div>
+                                <span>Prepare for client Meeting</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="px-3 py-1  text-gray-600 text-sm">Low</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Tasks Table -->
              <div class="bg-white rounded-xl shadow-sm">
+                <h1 class="p-4 font-semibold text-3xl">ALL TASKS</h1>
                 <div class="grid grid-cols-4 p-4 border-b border-gray-100 text-sm text-gray-500">
                     <div>TASKS TITLE</div>
                     <div>PRIORITY</div>
@@ -190,10 +240,10 @@
                             <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
                                 CA
                             </div>
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
+                            <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-sm border-2 border-white">
                                 JS
                             </div>
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
+                            <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center text-white text-sm border-2 border-white">
                                 B
                             </div>
                         </div>
@@ -219,13 +269,13 @@
                     </div>
                     <div>
                         <div class="flex -space-x-2">
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
+                            <div class="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-white text-sm border-2 border-white">
                                 AJ
                             </div>
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
+                            <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white text-sm border-2 border-white">
                                 EV
                             </div>
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
+                            <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center text-white text-sm border-2 border-white">
                                 B
                             </div>
                         </div>
@@ -254,13 +304,13 @@
                             <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
                                 CA
                             </div>
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
+                            <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-sm border-2 border-white">
                                 JS
                             </div>
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
+                            <div class="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-white text-sm border-2 border-white">
                                 AJ
                             </div>
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
+                            <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center text-white text-sm border-2 border-white">
                                 B
                             </div>
                         </div>
@@ -271,6 +321,7 @@
              </div>
              
              </div>
+            </div>
 
              
 
