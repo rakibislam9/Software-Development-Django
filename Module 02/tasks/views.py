@@ -12,4 +12,8 @@ def user_dashboard(request):
 
 
 def Test(request):
-    return render(request, "dashboard/test.html")
+    context = {
+        "name" : ["Rakib", "Imone", "Shahin"],
+        "age" : 22
+    }
+    return render(request, "dashboard/test.html", context)
