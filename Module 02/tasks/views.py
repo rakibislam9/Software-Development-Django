@@ -17,3 +17,9 @@ def Test(request):
         "age" : 22
     }
     return render(request, "dashboard/test.html", context)
+
+def Test2(request):
+    context = {
+        "num" : [10,20,30,40,50]
+    }
+    return render(request, "dashboard/test.html", context)
