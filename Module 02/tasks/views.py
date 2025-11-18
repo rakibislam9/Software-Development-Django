@@ -18,7 +18,7 @@ def Test(request):
     }
     return render(request, "dashboard/test.html", context)
 
-def Test2(request):
+def Test(request):
     context = {
         "num" : [10,20,30,40,50]
     }
