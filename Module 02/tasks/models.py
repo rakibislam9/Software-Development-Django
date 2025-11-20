@@ -9,8 +9,8 @@ class Employees(models.Model):
 
 
 class Task(models.Model):
-    Projects = models.ForeignKey("Projects", on_delete=models.CASCADE, default=1)
-    assigned_to = models.ManyToManyField(Employees)
+    Projects = models.ForeignKey("Projects", on_delete=models.CASCADE, default=1, related_name="tasks")
+    assigned_to = models.ManyToManyField(Employees, related_name="tasks")
     title = models.CharField(max_length=250)
     description = models.TextField()
     due_date = models.DateField()
