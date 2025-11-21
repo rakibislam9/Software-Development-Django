@@ -23,3 +23,6 @@ def Test(request):
         "num" : [10,20,30,40,50]
     }
     return render(request, "dashboard/test.html", context)
+
+def task_form(request):
+    return render(request,"dashboard/test_create_mathod.html")
