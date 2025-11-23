@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from tasks.form import TaskForm
+
 # Create your views here.
 
 def manager_dashboard(request):
@@ -25,4 +27,6 @@ def Test(request):
     return render(request, "dashboard/test.html", context)
 
 def task_form(request):
-    return render(request,"dashboard/test_create_mathod.html")
+    form = TaskForm()
+    context = {"form": form}
+    return render(request,"dashboard/test_create_mathod.html", context)
