@@ -14,9 +14,9 @@ class Task(models.Model):
     title = models.CharField(max_length=250)
     description = models.TextField()
     due_date = models.DateField()
-    is_complated = models.BooleanField(default=False)
+    is_completed = models.BooleanField(default=False)
     create_at = models.DateTimeField(auto_now_add=True)
-    uodate_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
 
 
 
@@ -39,5 +39,5 @@ class TaskDetails(models.Model):
 
 
 class Projects(models.Model):
-    Name = models.CharField(max_length=150)
-    Start_date = models.DateField()
+    name = models.CharField(max_length=150)
+    start_date = models.DateField()

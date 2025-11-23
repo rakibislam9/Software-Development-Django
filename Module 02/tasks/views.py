@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from tasks.form import TaskForm
+from tasks.forms import TaskForm
 from tasks.models import Employees
 
 # Create your views here.
@@ -30,5 +30,5 @@ def Test(request):
 def task_form(request):
     employees = Employees.objects.all()
     form = TaskForm(employees=employees)
-    context = {"form": form}
+    context = {"form": form , "employees": employees}
     return render(request,"dashboard/test_create_mathod.html", context)
