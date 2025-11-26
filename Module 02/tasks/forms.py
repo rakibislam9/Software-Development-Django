@@ -33,17 +33,23 @@ class StyledFormmixin:
                 })
             elif isinstance(fields.widget, forms.Textarea):
                 fields.widget.attrs.update({
-                    'class' : self.default_classes,
+                    'class' : f'{self.default_classes} resize-none',
                     'placeholder': f"Enter {fields.label.lower()}",
                     'rows': 4
                 })
             elif isinstance(fields.widget, forms.SelectDateWidget):
+                
                 fields.widget.attrs.update({
-                    'class' : self.default_classes,
+                    'class' : "border border-gray-300 rounded-lg shadow-sm focus:border-rose-500 focus:ring-rose-500",
                 })
             elif isinstance (fields.widget, forms.CheckboxSelectMultiple):
+               
                 fields.widget.attrs.update({
                     'class' : "space-y-2"
+                })
+            else:
+                fields.widget.attrs.update({
+                    'class' : self.default_classes
                 })
 
 
@@ -51,7 +57,10 @@ class TaskModelForm(StyledFormmixin, forms.ModelForm):
     class Meta:
         model = Task
         fields = ['title', 'description', 'due_date', 'assigned_to']
-
+        widgets = {
+            'due_date' : forms.SelectDateWidget,
+            'assigned_to' : forms.CheckboxSelectMultiple
+        }
         '''Using Mixing widget'''
 
 
