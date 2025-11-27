@@ -13,14 +13,25 @@ class Employees(models.Model):
 
 
 class Task(models.Model):
+    STATUS_CHOICS = [
+        ('PENDING', 'Pending'),
+        ('IN_PROGRESS', 'In progress'),
+        ('COMPLETED', 'COMPLETED')
+    ]
     Projects = models.ForeignKey("Projects", on_delete=models.CASCADE, default=1, related_name="tasks")
     assigned_to = models.ManyToManyField(Employees, related_name="tasks")
     title = models.CharField(max_length=250)
     description = models.TextField()
     due_date = models.DateField()
+    status = models.CharField(max_length=15,choices=STATUS_CHOICS, default="PENDING")
     is_completed = models.BooleanField(default=False)
     create_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return self.title
+    
 
 
 
@@ -42,6 +53,16 @@ class TaskDetails(models.Model):
 
 
 
+    def __str__(self):
+        return f"Details form Task {self.task.title}"
+
+
+
 class Projects(models.Model):
     name = models.CharField(max_length=150)
+    description = models.TextField(blank=True, null=True)
     start_date = models.DateField()
+
+
+    def __str__(self):
+        return self.name
