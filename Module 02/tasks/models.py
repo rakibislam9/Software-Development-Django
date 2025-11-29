@@ -18,7 +18,7 @@ class Task(models.Model):
         ('IN_PROGRESS', 'In progress'),
         ('COMPLETED', 'COMPLETED')
     ]
-    Projects = models.ForeignKey("Projects", on_delete=models.CASCADE, default=1, related_name="tasks")
+    project = models.ForeignKey("Projects", on_delete=models.CASCADE, default=1, related_name="tasks")
     assigned_to = models.ManyToManyField(Employees, related_name="tasks")
     title = models.CharField(max_length=250)
     description = models.TextField()
@@ -46,7 +46,7 @@ class TaskDetails(models.Model):
         (Low, 'Low') 
     )
     task = models.OneToOneField(Task, on_delete=models.DO_NOTHING,related_name='details',)
-
+    assigned_to = models.CharField(max_length=255, null=True, blank=True)
     priority = models.CharField(max_length=1, choices=PRIORITY_OPTIONS, default=Low)
 
     notes = models.TextField(blank=True, null=True)

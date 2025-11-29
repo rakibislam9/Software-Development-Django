@@ -62,3 +62,8 @@ def task_form(request):
 
     context = {"form": form}
     return render(request,"dashboard/test_create_mathod.html", context)
+
+
+def view_task(request):
+    tasks = Task.objects.all()
+    return render(request, "show_task.html", {"tasks": tasks})
