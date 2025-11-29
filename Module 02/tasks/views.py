@@ -66,4 +66,9 @@ def task_form(request):
 
 def view_task(request):
     tasks = Task.objects.all()
-    return render(request, "show_task.html", {"tasks": tasks})
+
+    tasks3 = Task.objects.get(id=3)
+
+    first_task = Task.objects.first()
+
+    return render(request, "show_task.html", {"tasks": tasks, "tasks3" : tasks3, "first_task": first_task})
