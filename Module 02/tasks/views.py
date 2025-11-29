@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from tasks.forms import TaskForm, TaskModelForm
 from tasks.models import Employees, Task, TaskDetails,Projects
 from datetime import date
-from django.db.models import Q 
+from django.db.models import Q, Count, Max, Min, Avg
 
 # Create your views here.
 
@@ -67,17 +67,7 @@ def task_form(request):
 
 
 def view_task(request):
-    
-    # Select related (Foreignkey, OnToOneField)
-    # tasks = Task.objects.all()
-    # tasks = Task.objects.select_related('details').all()
-    # tasks = TaskDetails.objects.select_related('task').all()
-    # tasks = Task.objects.select_related('project').all()
 
-    """ prefetch_related (reverse Foreignkey, manytomany)"""
-    # tasks = Projects.objects.prefetch_related('tasks').all()
-
-    # tasks = Task.objects.prefetch_related('assigned_to').all()
-
-    # tasks = Employees.objects.prefetch_related('assigned_to').all()
-    return render(request, "show_task.html", {"tasks": tasks})
+    # task_count = Task.objects.aggregate(num_task=Count('id'))
+    projects  = Projects.objects.annotate(num_task=Count('tasks'))
+    return render(request, "show_task.html", {"projects": projects})

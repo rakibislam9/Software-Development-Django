@@ -8,19 +8,18 @@
 <body>
     <div>
          <ul>
-            {% for task in tasks %}
+            {% for project in projects %}
                 <li>
-                    <P>{{task.name}}</P>
-                    {% for emp in tasks.assigned_to.all %}
-                        <SPan>{{emp.name}}</SPan>
-                    {% endfor %}
+                    <P>{{project.name}}</P>
+                    <p>{{project.num_task}}</p>
                 </li>
             {% endfor %}
-        </ul>
+        </ul> 
     </div>
 
     <div>
         {% comment %} {{tasks}} {% endcomment %}
+         {% comment %} <p>{{task_count.num_task}}</p> {% endcomment %}
     </div>
 </body>
 </html>
