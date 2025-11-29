@@ -10,8 +10,10 @@
          <ul>
             {% for task in tasks %}
                 <li>
-                    <P>{{task.title}}</P>
-                    <SPan>{{task.status}}</SPan>
+                    <P>{{task.name}}</P>
+                    {% for emp in tasks.assigned_to.all %}
+                        <SPan>{{emp.name}}</SPan>
+                    {% endfor %}
                 </li>
             {% endfor %}
         </ul>
