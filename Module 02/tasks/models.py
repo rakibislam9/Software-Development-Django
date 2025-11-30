@@ -57,7 +57,6 @@ class TaskDetails(models.Model):
         return f"Details form Task {self.task.title}"
 
 
-
 class Projects(models.Model):
     name = models.CharField(max_length=150)
     description = models.TextField(blank=True, null=True)
