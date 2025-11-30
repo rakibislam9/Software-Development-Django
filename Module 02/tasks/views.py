@@ -41,31 +41,13 @@ def task_form(request):
 
             form.save()
 
-            return render(request, "dashboard/test_create_mathod.html", {"form": form, "message": "Task added Successfully"})
-
-            '''For Django Form'''
-            # print(form.cleaned_data)
-
-            # data = form.cleaned_data
-            # title = data.get('title')
-            # description = data.get('description')
-            # due_date = data.get('due_date')
-            # assigned_to = data.get('assigned_to')
-
-            # task = Task.objects.create(
-            #     title=title, description=description, due_date=due_date
-            # )
-
-            # for emp_id in assigned_to:
-            #     employees = Employees.objects.get(id=emp_id)
-            #     task.assigned_to.add(employees)
-
-            
+            return render(request, "dashboard/test_create_mathod.html", {"form": form, "message": "Task added Successfully"}
+    
 
     context = {"form": form}
     return render(request,"dashboard/test_create_mathod.html", context)
 
-
+# view_task define
 def view_task(request):
 
     # task_count = Task.objects.aggregate(num_task=Count('id'))
