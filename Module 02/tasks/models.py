@@ -33,7 +33,7 @@ class Task(models.Model):
         return self.title
     
 
-
+# Tasks Details Model Creae
 
 class TaskDetails(models.Model):
     High = 'H'
@@ -56,6 +56,7 @@ class TaskDetails(models.Model):
     def __str__(self):
         return f"Details form Task {self.task.title}"
 
+# Projects models create
 
 class Projects(models.Model):
     name = models.CharField(max_length=150)
