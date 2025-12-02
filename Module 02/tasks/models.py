@@ -11,6 +11,7 @@ class Employees(models.Model):
         return self.name
     
 
+# Tasks Models create
 
 class Task(models.Model):
     STATUS_CHOICS = [
