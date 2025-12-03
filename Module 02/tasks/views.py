@@ -53,5 +53,7 @@ def task_form(request):
 def view_task(request):
 
     # task_count = Task.objects.aggregate(num_task=Count('id'))
-    projects  = Projects.objects.annotate(num_task=Count('tasks'))
+    # projects  = Projects.objects.annotate(num_task=Count('tasks'))
+    projects  = Projects.objects.annotate(num_task=Max('tasks'))
+
     return render(request, "show_task.html", {"projects": projects})
