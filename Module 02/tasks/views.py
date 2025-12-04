@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from tasks.forms import TaskForm, TaskModelForm
 from tasks.models import Employees, Task, TaskDetails,Projects
-from datetime import date
+from datetime import date, timedelta
 from django.db.models import Q, Count, Max, Min, Avg
+from django.utils import timezone
 
 # Create your views here.
 
@@ -53,7 +54,10 @@ def task_form(request):
 def view_task(request):
 
     # task_count = Task.objects.aggregate(num_task=Count('id'))
-    # projects  = Projects.objects.annotate(num_task=Count('tasks'))
-    projects  = Projects.objects.annotate(num_task=Max('tasks'))
+    projects  = Projects.objects.annotate(num_task=Count('tasks'))
+    # projects  = Projects.objects.annotate(num_task=Max('tasks'))
+
+    
+
 
     return render(request, "show_task.html", {"projects": projects})
