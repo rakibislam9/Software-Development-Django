@@ -15,93 +15,28 @@
                 {% comment %} Tasks Items {% endcomment %}
 
              <div class="divide-y divide-gray-100">
-                <div class="grid grid-cols-4 p-4 gap-4 items-center">
+                
+                {% for task in tasks %}
+                    <div class="grid grid-cols-4 p-4 gap-4 items-center">
 
                     <div class="flex items-center gap-2">
                         <div class="w-2 h-2 rounded-full bg-green-500"></div>
                         <div>
-                            <span>Test Low Tasks</span>
+                            <span>{{task.title}}</span>
                         </div>
                     </div>
                     <div>
-                        <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm">Low</span>
-                    </div>
-                    <div>
-                        <div class="flex -space-x-2">
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
-                                CA
-                            </div>
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
-                                JS
-                            </div>
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
-                                B
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-gray-500">9 Months ago</div>
-
-                </div>
-             </div>
-
-             {% comment %} Tasks items -2 {% endcomment %}
-
-             <div class="divide-y divide-gray-100">
-                <div class="grid grid-cols-4 p-4 gap-4 items-center">
-
-                    <div class="flex items-center gap-2">
-                        <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
-                        <div>
-                            <span>Test Low Tasks</span>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="px-3 py-1 rounded-full bg-gray-200  text-sm">Normal</span>
-                    </div>
-                    <div>
-                        <div class="flex -space-x-2">
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
-                                AJ
-                            </div>
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
-                                EV
-                            </div>
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
-                                B
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-gray-500">9 Months ago</div>
-
-                </div>
-             </div>
-
-             {% comment %} Task Items -3 {% endcomment %}
-
-             <div class="divide-y divide-gray-100">
-                <div class="grid grid-cols-4 p-4 gap-4 items-center">
-
-                    <div class="flex items-center gap-2">
-                        <div class="w-2 h-2 rounded-full bg-red-500"></div>
-                        <div>
-                            <span>Test Low Tasks</span>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="px-3 py-1 rounded-full bg-red-50 text-red-600 text-sm">Wigh</span>
+                        <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm">{{task.details.get_priority_display}}</span>
                     </div>
                     <div>
                         <div class="flex -space-x-2">
                             <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
                                 CA
                             </div>
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
+                            <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center text-white text-sm border-2 border-white">
                                 JS
                             </div>
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
-                                AJ
-                            </div>
-                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
+                            <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white text-sm border-2 border-white">
                                 B
                             </div>
                         </div>
@@ -109,7 +44,9 @@
                     <div class="text-gray-500">9 Months ago</div>
 
                 </div>
-             </div> 
+                {% endfor %}
+             </div>
+            
             </div>
 
 
