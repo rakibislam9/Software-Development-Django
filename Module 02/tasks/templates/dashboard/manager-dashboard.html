@@ -3,7 +3,7 @@
   {% block task %}
 
   {% comment %} Tasks Table  {% endcomment %}
-             <div class="bg-white rounded-xl shadow-sm w-full max-w-[1200px] mx-auto">
+            <div class="bg-white rounded-xl shadow-sm w-full max-w-[1200px] mx-auto">
                 <h1 class="p-4 font-semibold text-3xl">ALL TASKS</h1>
                 <div class="grid grid-cols-4 p-4 border-b border-gray-100 text-sm text-gray-500">
                     <div>TASKS TITLE</div>
@@ -14,43 +14,42 @@
 
                 {% comment %} Tasks Items {% endcomment %}
 
-             <div class="divide-y divide-gray-100">
-                
-                {% for task in tasks %}
-                    <div class="grid grid-cols-1 md:grid-cols-4 p-4 gap-4 items-center">
+                <div class="divide-y divide-gray-100">
+                    
+                    {% for task in tasks %}
+                        <div class="grid grid-cols-1 md:grid-cols-4 p-4 gap-4 items-center">
 
-                    <div class="flex flex-wrap md:flex-nowrap gap-1 md:-space-x-2">
-                        <div class="w-2 h-2 rounded-full bg-green-500"></div>
-                        <div>
-                            <span>{{task.title}}</span>
+                            <div class="flex flex-wrap md:flex-nowrap gap-1 md:-space-x-2">
+                                <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                                <div>
+                                    <span>{{task.title}}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm">{{task.details.get_priority_display}}</span>
+                            </div>
+                            <div>
+                                <div class="flex -space-x-2">
+                                    {% for emp in task.assigned_to.all %}
+                                        <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
+                                        {{emp.name|slice:' :2'}}
+                                        </div>
+                                    {% endfor %}
+                                    
+                            </div>
+                            <div>
+                            <div class="flex -space-x-2">
+                                {% for emp in task.assigned_to.all %}
+                                    <div class="w-8 h-8 ...">
+                                        {{ emp.name|slice:":2" }}
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm">{{task.details.get_priority_display}}</span>
-                    </div>
-                    <div>
-                        <div class="flex -space-x-2">
-                            {% for emp in task.assigned_to.all %}
-                                <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
-                                {{emp.name|slice:' :2'}}
-                                </div>
-                            {% endfor %}
-                            
-                    </div>
-                    <div>
-                    <div class="flex -space-x-2">
-                        {% for emp in task.assigned_to.all %}
-                            <div class="w-8 h-8 ...">
-                                {{ emp.name|slice:":2" }}
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
 
-
+                    {% endfor %}
                 </div>
-                {% endfor %}
-             </div>
             
             </div>
 
