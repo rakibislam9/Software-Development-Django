@@ -10,7 +10,7 @@ from django.utils import timezone
 
 def manager_dashboard(request):
 
-    tasks = Task.objects.select_related('details').all()
+    tasks = Task.objects.select_related('details').prefetch_related('assigned_to').all()
 
     tatal_task = tasks.count()
 
