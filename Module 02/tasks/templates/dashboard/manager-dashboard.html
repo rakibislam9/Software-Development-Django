@@ -1,57 +1,59 @@
-  {% extends "dashboard/dashboard.html" %}
-  {% block title %}Manager Dashboard{% endblock title %}
-  {% block task %}
+{% extends "dashboard/dashboard.html" %}
+{% block title %}Manager Dashboard{% endblock title %}
+{% block task %}
 
-  {% comment %} Tasks Table  {% endcomment %}
-            <div class="bg-white rounded-xl shadow-sm w-full max-w-[1200px] mx-auto">
-                <h1 class="p-4 font-semibold text-3xl">ALL TASKS</h1>
-                <div class="grid grid-cols-4 p-4 border-b border-gray-100 text-sm text-gray-500">
-                    <div>TASKS TITLE</div>
-                    <div>PRIORITY</div>
-                    <div>TEAM</div>
-                    <div>CREATED AT</div>
-                </div>
+<div class="bg-white rounded-xl shadow-sm w-full max-w-[1200px] mx-auto">
 
-                {% comment %} Tasks Items {% endcomment %}
+    <h1 class="p-4 font-semibold text-3xl">ALL TASKS</h1>
 
-                <div class="divide-y divide-gray-100">
-                    
-                    {% for task in tasks %}
-                        <div class="grid grid-cols-1 md:grid-cols-4 p-4 gap-4 items-center">
+    <!-- Header Row -->
+    <div class="grid grid-cols-4 p-4 border-b border-gray-200 text-sm text-gray-500">
+        <div>TASKS TITLE</div>
+        <div>PRIORITY</div>
+        <div>TEAM</div>
+        <div>CREATED AT</div>
+    </div>
 
-                            <div class="flex flex-wrap md:flex-nowrap gap-1 md:-space-x-2">
-                                <div class="w-2 h-2 rounded-full bg-green-500"></div>
-                                <div>
-                                    <span>{{task.title}}</span>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm">{{task.details.get_priority_display}}</span>
-                            </div>
-                            <div>
-                                <div class="flex -space-x-2">
-                                    {% for emp in task.assigned_to.all %}
-                                        <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
-                                        {{emp.name|slice:' :2'}}
-                                        </div>
-                                    {% endfor %}
-                                    
-                                </div>
-                            <div>
-                            <div class="flex -space-x-2">
-                                {% for emp in task.assigned_to.all %}
-                                    <div class="w-8 h-8 ...">
-                                        {{ emp.name|slice:":2" }}
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
+    <!-- Task Rows -->
+    <div class="divide-y">
 
-                    {% endfor %}
-                </div>
-            
+        {% for task in tasks %}
+        <div class="grid grid-cols-4 p-4 items-center gap-4">
+
+            <!-- Title -->
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                <span>{{ task.title }}</span>
             </div>
 
+            <!-- Priority -->
+            <div>
+                <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-600 text-sm">
+                    {{ task.details.get_priority_display }}
+                </span>
+            </div>
 
-            {% endblock task %}
+            <!-- Team -->
+            <div class="flex -space-x-2">
+                {% for emp in task.assigned_to.all %}
+                    <span class="w-8 h-8 rounded-full bg-blue-500 flex 
+                                 items-center justify-center text-white 
+                                 text-sm border-2 border-white">
+                        {{ emp.name|slice:":2" }}
+                    </span>
+                {% endfor %}
+            </div>
+
+            <!-- Created At -->
+            <div class="text-gray-500">
+                {{ task.create_at|date:"Y-m-d H:i" }}
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock task %}
