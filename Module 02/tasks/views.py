@@ -29,7 +29,7 @@ def manager_dashboard(request):
     }
     return render(request, "dashboard/manager-dashboard.html", context)
     
-
+# User Dashboard 
 def user_dashboard(request):
     return render(request, "dashboard/userdashboard.html")
 
