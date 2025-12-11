@@ -12,20 +12,32 @@ def manager_dashboard(request):
 
     tasks = Task.objects.select_related('details').prefetch_related('assigned_to').all()
 
-    tatal_task = tasks.count()
+    # tatal_task = tasks.count()
 
-    comlead_task = Task.objects.filter(status="COMPLETED").count()
+    # comlead_task = Task.objects.filter(status="COMPLETED").count()
 
-    in_progres_task = Task.objects.filter(status="IN_PROGRESS").count()
+    # in_progres_task = Task.objects.filter(status="IN_PROGRESS").count()
 
-    peinding_task = Task.objects.filter(status="PENDING").count()
+    # peinding_task = Task.objects.filter(status="PENDING").count()
+
+    # context = {
+    #     'tasks' : tasks,
+    #     'tatal_task' : tatal_task,
+    #     'peinding_task' : peinding_task,
+    #     'in_progres_task' : in_progres_task,
+    #     'comlead_task' : comlead_task
+    # }
+
+    counts = Task.objects.aggregate(
+        total = Count('id'),
+        complated = Count('id', filter= Q(status='COMPLETED')),
+        in_progress = Count('id', filter=Q(status='IN_PROGRESS')),
+        pending = Count('id', filter=Q(status='PENDING')),
+    )
 
     context = {
-        'tasks' : tasks,
-        'tatal_task' : tatal_task,
-        'peinding_task' : peinding_task,
-        'in_progres_task' : in_progres_task,
-        'comlead_task' : comlead_task
+        "tasks" : tasks,
+        "Counts" : counts
     }
     return render(request, "dashboard/manager-dashboard.html", context)
     
