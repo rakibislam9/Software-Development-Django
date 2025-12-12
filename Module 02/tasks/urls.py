@@ -4,7 +4,7 @@ from tasks.views import manager_dashboard, user_dashboard, Test, task_form, view
 
 
 urlpatterns = [
-    path('dashboard/', manager_dashboard),
+    path('dashboard/', manager_dashboard, name = "manager-dashboard"),
     path('userdashboard/', user_dashboard),
     path('test/', Test),
     path('task_form/', task_form),

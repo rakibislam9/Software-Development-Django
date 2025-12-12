@@ -10,23 +10,9 @@ from django.utils import timezone
 
 def manager_dashboard(request):
 
+    type = request.GET.get('type')
+    
     tasks = Task.objects.select_related('details').prefetch_related('assigned_to').all()
-
-    # tatal_task = tasks.count()
-
-    # comlead_task = Task.objects.filter(status="COMPLETED").count()
-
-    # in_progres_task = Task.objects.filter(status="IN_PROGRESS").count()
-
-    # peinding_task = Task.objects.filter(status="PENDING").count()
-
-    # context = {
-    #     'tasks' : tasks,
-    #     'tatal_task' : tatal_task,
-    #     'peinding_task' : peinding_task,
-    #     'in_progres_task' : in_progres_task,
-    #     'comlead_task' : comlead_task
-    # }
 
     counts = Task.objects.aggregate(
         total = Count('id'),
@@ -37,7 +23,7 @@ def manager_dashboard(request):
 
     context = {
         "tasks" : tasks,
-        "Counts" : counts
+        "counts" : counts
     }
     return render(request, "dashboard/manager-dashboard.html", context)
     
