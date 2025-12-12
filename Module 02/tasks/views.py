@@ -10,9 +10,28 @@ from django.utils import timezone
 
 def manager_dashboard(request):
 
-    type = request.GET.get('type')
-    
+
+    # tatal_task = tasks.count()
+
+    # comlead_task = Task.objects.filter(status="COMPLETED").count()
+
+    # in_progres_task = Task.objects.filter(status="IN_PROGRESS").count()
+
+    # peinding_task = Task.objects.filter(status="PENDING").count()
+
+    # context = {
+    #     'tasks' : tasks,
+    #     'tatal_task' : tatal_task,
+    #     'peinding_task' : peinding_task,
+    #     'in_progres_task' : in_progres_task,
+    #     'comlead_task' : comlead_task
+    # }
+
+    type = request.GET.get('type', 'all')
+    # print(type)
+
     tasks = Task.objects.select_related('details').prefetch_related('assigned_to').all()
+
 
     counts = Task.objects.aggregate(
         total = Count('id'),
@@ -20,6 +39,20 @@ def manager_dashboard(request):
         in_progress = Count('id', filter=Q(status='IN_PROGRESS')),
         pending = Count('id', filter=Q(status='PENDING')),
     )
+
+    # Retrive data
+
+    baces_qurey = Task.objects.select_related('details').prefetch_related('assigned_to')
+
+
+    if type == 'complated':
+        tasks =  baces_qurey .filter(status='COMPLETED')
+    elif type == 'in_progress':
+        tasks =  baces_qurey .filter(status='IN_PROGRESS')
+    elif type == 'pending':
+        tasks =  baces_qurey .filter(status='PENDING')
+    elif type == 'all':
+        tasks =  baces_qurey .all()
 
     context = {
         "tasks" : tasks,
