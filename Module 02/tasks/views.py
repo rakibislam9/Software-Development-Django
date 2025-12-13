@@ -10,22 +10,7 @@ from django.utils import timezone
 
 def manager_dashboard(request):
 
-
-    # tatal_task = tasks.count()
-
-    # comlead_task = Task.objects.filter(status="COMPLETED").count()
-
-    # in_progres_task = Task.objects.filter(status="IN_PROGRESS").count()
-
-    # peinding_task = Task.objects.filter(status="PENDING").count()
-
-    # context = {
-    #     'tasks' : tasks,
-    #     'tatal_task' : tatal_task,
-    #     'peinding_task' : peinding_task,
-    #     'in_progres_task' : in_progres_task,
-    #     'comlead_task' : comlead_task
-    # }
+# GET data Retractiv
 
     type = request.GET.get('type', 'all')
     # print(type)
