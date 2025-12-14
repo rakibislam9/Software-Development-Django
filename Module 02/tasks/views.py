@@ -10,7 +10,7 @@ from django.utils import timezone
 
 def manager_dashboard(request):
 
-# GET data Retractiv
+
 
     type = request.GET.get('type', 'all')
     # print(type)
