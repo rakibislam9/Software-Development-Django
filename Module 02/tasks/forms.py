@@ -66,24 +66,7 @@ class TaskModelForm(StyledFormmixin, forms.ModelForm):
 
 
         '''manualbwudget'''
-        # widgets = {
-        #     'title' : forms.TextInput(attrs={
-        #         'class':"border border-gray-300 w-1/2 rounded-lg shadow-sm focus:border-rose-500 focus:ring-rose-500",
-        #         'placeholder': "Enter task title"
-        #     }),
-        #     'description': forms.Textarea(attrs={
-        #         'class':"border border-gray-300 w-1/2 rounded-lg shadow-sm focus:border-rose-500 focus:ring-rose-500",
-        #         'placeholder': "Describe the task"
-        #     }),
-        #     'due_date' : forms.SelectDateWidget(attrs={
-        #         'class':"border border-gray-300 rounded-lg shadow-sm focus:border-rose-500 focus:ring-rose-500",
-                
-        #     }),
-        #     'assigned_to' : forms.CheckboxSelectMultiple(attrs={
-        #         'class':"border border-gray-300 w-1/2 rounded-lg shadow-sm focus:border-rose-500 focus:ring-rose-500",
-                
-        #     })
-        # }
+        
 
     '''widget use Mixing'''
 
