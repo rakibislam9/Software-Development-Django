@@ -11,15 +11,18 @@
         <div class="w-1/2 mx-auto mt-8">
             <div>
             {% if message %}
-                <p>{{message}}</p>
+                {% for massage in massage %}
+                    <div class="px-2 py-1 {% if massage.tags == 'succes'%}bg-green-500{% endif %}">{{message}}</div>
+                {% endfor %}
             {% endif %}
             </div>
             <form method="POST">
                 
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ task_form.as_p }}
+                {{ task_detail_form.as_p}}
             
-            <button type="submit"class="bg-rose-500 px-2 py-2 text-white">Submit</button>
+            <button type="submit"class=" mb-5 bg-rose-500 px-2 py-2 text-white">Submit</button>
 
        </form>
 

@@ -7,6 +7,6 @@ urlpatterns = [
     path('dashboard/', manager_dashboard, name = "manager-dashboard"),
     path('userdashboard/', user_dashboard),
     path('test/', Test),
-    path('task_form/', task_form),
+    path('task_form/', task_form, name = "task-form"),
     path('view_task/',view_task)
 ]

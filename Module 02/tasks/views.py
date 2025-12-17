@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from tasks.forms import TaskForm, TaskModelForm
+from tasks.forms import TaskForm, TaskModelForm, TaskDetaileModeleForm
 from tasks.models import Employees, Task, TaskDetails,Projects
 from datetime import date, timedelta
 from django.db.models import Q, Count, Max, Min, Avg
 from django.utils import timezone
+from django.contrib import messages
 
 # Create your views here.
 
@@ -66,22 +67,29 @@ def Test(request):
 
 def task_form(request):
     # employees = Employees.objects.all()
-    form = TaskModelForm()
+    task_form = TaskModelForm()
+    task_detail_form = TaskDetaileModeleForm()
 
     if request.method == "POST":
-        form = TaskModelForm(request.POST)
-        if form.is_valid():
+        task_form = TaskModelForm(request.POST)
+        task_detail_form = TaskDetaileModeleForm(request.POST)
+        if task_form.is_valid() and task_detail_form.is_valid():
 
             """For Model Form Data"""
 
-            form.save()
+            task = task_form.save()
+            task_detail = task_detail_form.save(commit = False)
+            task_detail.task = task
+            task_detail.save()
 
-            return render(request, "dashboard/test_create_mathod.html", {"form": form, "message": "Task added Successfully"})
+
+            messages.success(request, "Task Create Successfully")
+            return redirect('task-form')
                           
     
     
 
-    context = {"form": form}
+    context = {"task_form": task_form, "task_detail_form" : task_detail_form }
     return render(request,"dashboard/test_create_mathod.html", context)
 
 # view_task define
